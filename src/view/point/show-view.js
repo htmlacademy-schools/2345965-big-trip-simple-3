@@ -2,8 +2,13 @@ import {createPointShowTemplate} from '../../template/point/show';
 import {createElement} from '../../render';
 
 export default class PointShowView {
+
+  constructor(point) {
+    this.point = point;
+  }
+
   getTemplate() {
-    return createPointShowTemplate();
+    return createPointShowTemplate(this.point);
   }
 
   getElement() {

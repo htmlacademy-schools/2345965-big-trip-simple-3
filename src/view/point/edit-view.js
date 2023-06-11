@@ -2,8 +2,13 @@ import {createPointEditTemplate} from '../../template/point/edit';
 import {createElement} from '../../render';
 
 export default class PointEditView {
+
+  constructor(point) {
+    this.point = point;
+  }
+
   getTemplate() {
-    return createPointEditTemplate();
+    return createPointEditTemplate(this.point);
   }
 
   getElement() {
