@@ -11,12 +11,16 @@ export default class PointListPresenter {
     this.pointListContainer = pointListContainer;
   }
 
-  init() {
+  init(event, model) {
+    this.pointListContainer = event;
+    this.pointModel = model;
+    this.pointListPoints = [...this.pointModel.getTasks()];
+
     render(this.pointList, this.pointListContainer);
-    render(new PointEditView, this.pointList.getElement());
+    render(new PointEditView(this.pointListPoints[0]), this.pointList.getElement());
     render(new PointCreateView, this.pointList.getElement());
     for (let i = 0; i < 10; i++) {
-      render(new PointShowView, this.pointList.getElement());
+      render(new PointShowView(this.pointListPoints[i]), this.pointList.getElement());
     }
   }
 }
